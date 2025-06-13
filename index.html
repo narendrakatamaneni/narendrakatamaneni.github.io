@@ -13,7 +13,7 @@
 	QA: https://experience-qa.adobe.com/solutions/CQ-assets-selectors/static-assets/resources/assets-selectors.js (You must be connected to adobe VPN to access this link)
 	LOCAL: ../../lib/umd/assets-selectors.js (if you are running this example locally)
 	-->
-    <script src="https://experience.adobe.com/solutions/CQ-assets-selectors/static-assets/resources/assets-selectors.js"></script>
+    <script src="https://experience-stage.adobe.com/solutions/CQ-assets-selectors/static-assets/resources/assets-selectors.js"></script>
 
     <script>
 		let imsInstance = null;
@@ -23,6 +23,7 @@
             imsScope: "AdobeID,openid,read_organizations,additional_info.projectedProductContext",
             redirectUrl: window.location.href,
             modalMode: true,
+            env: 'STAGE',
             // Optional parameters:
             // modalMode: false, // set to false to open in a full page reload flow
             // adobeImsOptions: {
