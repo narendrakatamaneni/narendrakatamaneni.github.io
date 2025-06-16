@@ -94,17 +94,6 @@
         }
 
         /**
-         * Closes the Destination Selector dialog when it is called.
-         * This is a helper function used by Asset Selectors UI.
-         *
-         * @function onClose
-         */
-        function destinationSelectorOnClose() {
-            const selectorDialog = document.getElementById('destination-selector-modal');
-            selectorDialog.close();
-        }
-
-        /**
          * Handles the selected asset when it is called.
          * This is a helper function used by Asset Selectors UI.
          *
@@ -177,64 +166,6 @@
             });
         }
 
-        /**
-         * Renders a Destination Selector UI with IMS authentication.
-         * The UI will use the registered IMS instance (created in registerAssetsSelectorsAuthService) to get the required tokens.
-         * If a valid token is not present, the sign-in flow will be triggered in either pop-up or full page reload mode based on the configurations set in the imsProps.
-         * Note that registerAssetsSelectorsAuthService must be called before triggering this flow.
-         * For best user experience, it is recommended that registerAssetsSelectorsAuthService is called on page load prior to calling this function.
-         *
-         * @async
-         * @function renderDestinationSelectorWithImsFlow
-         * @returns {Promise<void>}
-         */
-        async function renderDestinationSelectorWithImsFlow() {
-            /**
-             * Props for the Destination Selector UI.
-             *
-             * @typedef {Object} DestinationSelectorProps
-             * @property {string} imsOrg - The IMS organization ID for the user.
-             * @property {Function} onClose - A callback function to be called when the Destination Selector dialog is closed.
-             * @property {Function} handleSelection - A callback function to be called when a destination is selected.
-             * @property {string} env - The environment where the Destination Selector is being used.
-             */
-
-            /** @type {DestinationSelectorProps} */
-            const props = {
-                "onClose": destinationSelectorOnClose,
-                "onConfirm": handleOnConfirm,
-            }
-
-            // Get the container element where the Destination Selector will be rendered.
-            const container = document.getElementById('destination-selector');
-
-            /**
-             * Renders the Destination Selector UI with IMS authentication, and shows the dialog when it's ready.
-             *
-             * @function renderDestinationSelectorWithAuthFlow
-             * @param {Element} container - The container element where the Destination Selector will be rendered.
-             * @param {DestinationSelectorProps} props - Props for the Destination Selector UI.
-             * @param {Function} callback - A callback function to be called when the UI is ready to be displayed.
-             */
-            PureJSSelectors.renderDestinationSelectorWithAuthFlow(container, props, () => {
-                const destinationSelectorDialog = document.getElementById('destination-selector-dialog');
-                destinationSelectorDialog.showModal();
-            });
-        }
-
-        /**
-         * Initiates the logout flow for the current IMS user using the registered IMS instance.
-         *
-         * @async
-         * @function logoutImsFlow
-         */
-        async function logoutImsFlow() {
-            console.log("Signing out...", imsInstance);
-
-            // Call the signOut method on the registered IMS instance to initiate the logout flow.
-            await imsInstance.signOut();
-        }
-
 	</script>
 </head>
 
@@ -246,24 +177,10 @@
 		<button onclick="renderAssetSelectorWithImsFlow()">Asset Selector - Select Assets with Ims Flow</button>
     </div>
     <div>
-        <button onclick="renderDestinationSelectorWithImsFlow()">Destination Selector - Select Assets with Ims Flow</button>
-    </div>
-    <div>
-		<button onclick="location.href='dnd.html'">Asset Selector - Drag & Drop</button>
-    </div>
-    <div>
-		<button onclick="logoutImsFlow()">(Sign Out)</button>
-	</div>
-    <div>
         <dialog id="asset-selector-modal">
             <div id="asset-selector" style="height: calc(100vh - 80px); width: calc(100vw - 60px); margin: -20px;"></div>
         </dialog>
     </div>
-    <div>
-      <dialog id="destination-selector-modal">
-          <div id="destination-selector" style="height: 100vh; width: calc(100vw - 60px);"></div>
-      </dialog>
-  </div>
 </body>
 
 </html>
