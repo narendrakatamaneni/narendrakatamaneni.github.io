@@ -86,6 +86,8 @@
         function onClose() {
             const selectorDialog = document.getElementById('asset-selector-modal');
             selectorDialog.close();
+            const assetSelectorDialog = document.getElementById('asset-selector');
+            assetSelectorDialog.removeChild(assetSelectorDialog.firstChild);
         }
 
         /**
