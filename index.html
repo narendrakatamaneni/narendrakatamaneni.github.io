@@ -80,13 +80,16 @@
          * @function onClose
          */
         function onClose() {
-            const selectorDialog = document.getElementById('asset-selector-modal');
+            /*const selectorDialog = document.getElementById('asset-selector-modal');
             selectorDialog.close();
             selectorDialog.remove();
             const newDialog = document.createElement('dialog');
             newDialog.id = 'asset-selector-modal';
             newDialog.innerHTML = '<div id="asset-selector" style="height: calc(100vh - 80px); width: calc(100vw - 60px); margin: -20px;"></div>';
-            document.body.appendChild(newDialog);
+            document.body.appendChild(newDialog);*/
+            // hide the dialog instead of removing it using css
+            const selectorDialog = document.getElementById('asset-selector-modal');
+            selectorDialog.style.display = 'none';
         }
 
         /**
@@ -160,6 +163,10 @@
                 const assetSelectorDialog = document.getElementById('asset-selector-modal');
                 assetSelectorDialog.showModal();
             });
+
+            // unhide the dialog initially
+            const assetSelectorDialog = document.getElementById('asset-selector-modal');
+            assetSelectorDialog.style.display = 'block';
         }
 
 	</script>
