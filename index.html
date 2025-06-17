@@ -13,16 +13,17 @@
 	QA: https://experience-qa.adobe.com/solutions/CQ-assets-selectors/static-assets/resources/assets-selectors.js (You must be connected to adobe VPN to access this link)
 	LOCAL: ../../lib/umd/assets-selectors.js (if you are running this example locally)
 	-->
-    <script src="https://experience.adobe.com/solutions/CQ-assets-selectors/static-assets/resources/assets-selectors.js"></script>
+    <script src="https://experience-stage.adobe.com/solutions/CQ-assets-selectors/static-assets/resources/assets-selectors.js"></script>
 
     <script>
 		let imsInstance = null;
 
         const imsProps = {
-            imsClientId: "aemcs-Intuit-stage-assetselector",
+            imsClientId: "aem-assets-frontend-1",
             imsScope: "AdobeID,openid,read_organizations,additional_info.projectedProductContext",
             redirectUrl: window.location.href,
             modalMode: true,
+            env: 'STAGE',
             // Optional parameters:
             // modalMode: false, // set to false to open in a full page reload flow
             // adobeImsOptions: {
@@ -82,11 +83,11 @@
         function onClose() {
             const selectorDialog = document.getElementById('asset-selector-modal');
             selectorDialog.close();
-            selectorDialog.remove();
+            /*selectorDialog.remove();
             const newDialog = document.createElement('dialog');
             newDialog.id = 'asset-selector-modal';
             newDialog.innerHTML = '<div id="asset-selector" style="height: calc(100vh - 80px); width: calc(100vw - 60px); margin: -20px;"></div>';
-            document.body.appendChild(newDialog);
+            document.body.appendChild(newDialog);*/
         }
 
         /**
